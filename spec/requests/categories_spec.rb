@@ -16,9 +16,7 @@ RSpec.describe CategoriesController, type: :controller do
 
     it "should return proper json" do
       create_list :category, 3
-
       subject
-      pp json
       expect(json.class).to eq(Hash)
       expect(json).not_to be_empty
       expect(json_data.length).to eq(3)
@@ -61,7 +59,7 @@ RSpec.describe CategoriesController, type: :controller do
     let(:categories) {create_list :category,3  }
     let(:category_id) {categories.first.id}
     before{delete :destroy, params: {id: category_id}}
-    
+
     it "should return a status code of 204" do
       expect(response).to have_http_status(204)
     end
